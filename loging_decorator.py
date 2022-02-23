@@ -8,11 +8,9 @@ def log_decor(path_to_file):
     def _log_decor(old_function):
 
         def new_function(*args, **kwargs):
-
             call_func = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
             result = old_function(*args, **kwargs)
             func_name = old_function.__name__
-
             with open(f'{path_to_file}data.log', 'a', encoding='utf-8') as file:
                 file.write(f"{call_func} - {func_name} - {args, kwargs} - {result}\n")
 

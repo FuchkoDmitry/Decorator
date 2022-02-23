@@ -14,12 +14,17 @@ def log_decor(path_to_file):
                         )
 
     def _log_decor(old_function):
+
         def new_function(*args, **kwargs):
+
             result = old_function(*args, **kwargs)
             func_name = old_function.__name__
             logger.debug(f'Function {func_name} was called with {args, kwargs} arguments. Result: {result}.')
+
             return result
+
         return new_function
+    
     return _log_decor
 
 
